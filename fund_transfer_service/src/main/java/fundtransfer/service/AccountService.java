@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import fundtransfer.entities.Account;
 import fundtransfer.exception.CustomApiException;
 import fundtransfer.models.MessageRequestTransfer;
-import fundtransfer.models.MessageResponseSuccess;
+import fundtransfer.models.MessageResponse;
 import fundtransfer.repositories.AccountRepository;
 
 @Service
@@ -29,7 +29,7 @@ public class AccountService
 	}
 	
 	@Transactional
-	public MessageResponseSuccess transferFunds(MessageRequestTransfer message)
+	public MessageResponse transferFunds(MessageRequestTransfer message)
 	{
 		Long debitAccNum = message.getFromAccount();
 		Long creditAccNum = message.getToAccount();
@@ -63,7 +63,7 @@ public class AccountService
 //		audit.setMessageId(message.getMessageId());
 //		audService.insertAuditLog(audit)
 		
-		return new MessageResponseSuccess(message.getMessageId(), 123, 0);
+		return new MessageResponse(message.getMessageId(), 123, 0);
 	}
 
 	public Integer updateAccountBalance(Double balance, Long accNum){

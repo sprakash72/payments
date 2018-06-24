@@ -1,19 +1,14 @@
 package fundtransfer.models;
 
-public class MessageResponseSuccess 
+public class MessageResponse 
 {
-	Integer messageId;
+//	Integer messageId;
 	Integer txnId;
 	Integer statusCode;
 //	String failureReason;
 	
 	
-	public Integer getMessageId() {
-		return messageId;
-	}
-	public void setMessageId(Integer messageId) {
-		this.messageId = messageId;
-	}
+	
 	public Integer getTxnId() {
 		return txnId;
 	}
@@ -27,12 +22,12 @@ public class MessageResponseSuccess
 		this.statusCode = statusCode;
 	}
 
-	public MessageResponseSuccess(Integer messageId, Integer txnId, Integer statusCode) {
-		this.messageId = messageId;
+	public MessageResponse(Integer messageId, Integer txnId, Integer statusCode) {
+//		this.messageId = messageId;
 		this.txnId = txnId;
 		this.statusCode = statusCode;
 	}
-	public MessageResponseSuccess() {
+	public MessageResponse() {
 	}
 	
 }

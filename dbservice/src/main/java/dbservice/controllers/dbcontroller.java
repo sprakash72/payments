@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -19,6 +20,7 @@ import dbservice.models.MessageResponse;
 import dbservice.service.AccountService;
 import dbservice.models.FundTransferErrorMessage;
 
+@CrossOrigin
 @RestController
 public class dbcontroller 
 {
@@ -31,8 +33,10 @@ public class dbcontroller
 	}
 	
 	@RequestMapping(value = "/core/fundtransfer", method = RequestMethod.POST)
-	public ResponseEntity<MessageResponse> fundTransfer(@RequestHeader("messade-id") Integer messageId,
+	public ResponseEntity<MessageResponse> fundTransfer(@RequestHeader("message-id") Integer messageId,
 			@RequestBody MessageRequestTransfer message) {
+		
+		System.out.println("DB Service invoked");
 		
 		MessageResponse resp = accountService.transferFunds(message, messageId);
 		

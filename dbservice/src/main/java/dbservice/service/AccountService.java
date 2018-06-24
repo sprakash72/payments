@@ -2,6 +2,8 @@ package dbservice.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,12 @@ public class AccountService
 		return accRepo.findByCustId(id);
 	}
 
+	public Double findBalanceByAccountNum(Long accNum){
+		Account account = accRepo.findBalanceByAccountNum(accNum); 
+		return account.getBalance();
+	}
+	
+	@Transactional
 	public MessageResponse transferFunds(MessageRequestTransfer message, Integer messageId) 
 	{
 		Long debitAccNum = message.getFromAccount();
@@ -32,7 +40,9 @@ public class AccountService
 			throw new CustomApiException("Payer Account doesnt exist", 121, messageId);
 		}
 		
-		Double debitAccBalance = accRepo.findBalanceByAccountNum(debitAccNum);
+		System.out.println("Account exists");
+		
+		Double debitAccBalance = findBalanceByAccountNum(debitAccNum);
 		System.out.println("Acc Num: " + debitAccNum + " Amount: " + debitAccBalance);
 		
 			
@@ -45,7 +55,7 @@ public class AccountService
 			throw new CustomApiException("Payee Account doesnt exist", 121, messageId);
 		}
 		
-		Double creditAccBalance = accRepo.findBalanceByAccountNum(creditAccNum);
+		Double creditAccBalance = findBalanceByAccountNum(creditAccNum);
 		creditAccBalance += amount;
 				
 		accRepo.updateBalance(debitAccBalance, debitAccNum);

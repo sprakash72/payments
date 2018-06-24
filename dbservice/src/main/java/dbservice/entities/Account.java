@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Account
 {
 	@Id @GeneratedValue
-	Integer Id;
+	Long Id;
 	
 	@Column(name="ACCNUM")
 	Long accountNum;
@@ -22,10 +22,10 @@ public class Account
 	
 	Integer custId;
 	
-	public Integer getId() {
+	public Long getId() {
 		return Id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		Id = id;
 	}
 	public Long getAccountNum() {

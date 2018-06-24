@@ -1,6 +1,7 @@
 package dbservice.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -13,10 +14,10 @@ import dbservice.entities.Account;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> 
 {
-	Account findById(Integer Id);
+//	Optional<Account> findById(Long Id);
 	List<Account> findByCustId(Integer custId);
 	Account findByAccountNum(Long accNum);
-	Double findBalanceByAccountNum(Long accNum);
+	Account findBalanceByAccountNum(Long accNum);
 	
 	@Modifying(clearAutomatically = true)
     @Query("UPDATE Account a SET a.balance  = :balance WHERE a.accountNum = :accountNum")
