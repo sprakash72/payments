@@ -86,7 +86,7 @@ public class FundTransferController
 		HttpEntity<DbServiceMessage> httpEntity = new HttpEntity<DbServiceMessage>(dbMessage, headers);
 		
 		ResponseEntity<MessageResponse> resp = restTemplate.postForEntity(
-				"http://localhost:8085/core/fundtransfer", 
+				"http://DB-SERVICE/core/fundtransfer", 
 				httpEntity, 
 				MessageResponse.class);
 		

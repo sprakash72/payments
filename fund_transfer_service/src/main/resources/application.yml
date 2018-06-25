@@ -1,6 +1,6 @@
 spring:
   application:
-    name: fundtransfer_service
+    name: fundtransfer-service
     
 eureka:
   client:
@@ -8,6 +8,6 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8301/eureka/
-    instance:
-      hostname: localhost   
+  instance:
+    hostname: localhost   
     

@@ -1,12 +1,12 @@
 spring:
   application:
-    name: db_service
+    name: db-service
     
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
-    service-url:
+    serviceUrl:
       defaultZone: http://localhost:8301/eureka/
-    instance:
-      hostname: localhost   
+  instance:
+    hostname: localhost   

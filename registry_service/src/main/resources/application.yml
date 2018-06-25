@@ -11,5 +11,14 @@ eureka:
     fetch-registry: false
   server:
     waitTimeInMsWhenSyncEmpty: 0
-      
+
+zuul:
+  prefix: /api
+  routes:
+      db_service:
+        path: /db_service/**
+        url: http://localhost:8085    
+      fundtransfer_service:
+        path: /fundtransfer_service/**
+        url: http://localhost:8084
   
